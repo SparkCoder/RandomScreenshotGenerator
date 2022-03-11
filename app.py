@@ -3,6 +3,7 @@ from typing import IO, List, Tuple, Callable
 import requests
 import random
 import tkinter as tk
+import tkinter.ttk as ttk
 import tkinter.filedialog as tkf
 
 from bs4 import BeautifulSoup
@@ -14,23 +15,39 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title('Screenshot Loader')
-
         self.v_width: int = 1280
         self.v_height: int = 720
 
+        # Setup app style
+        # --- Window
+        self.win_bg: str = '#000000'
+        # --- Button
+        self.btn_font: Tuple = ('calibri', 10, 'bold')
+        self.btn_bg: str = '#080808'
+        self.btn_fg: str = '#fefefe'
+
+        # Setup window
+        self.title('Screenshot Loader')
+        self.configure(bg=self.win_bg)
+
+        # Setup frame
+        self.frame: tk.Frame = tk.Frame(self, relief='sunken', bg=self.win_bg)
+        self.frame.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+
         # Image viewer
         self.viewer: tk.Canvas = tk.Canvas(
-            background='#000000', width=self.v_width, height=self.v_height)
+            self.frame, background='#000000', width=self.v_width, height=self.v_height)
         self.viewer.grid(row=0, columnspan=2)
 
         # Refersh button
-        self.btn_refresh: tk.Button = tk.Button(self, text='REFRESH')
+        self.btn_refresh: tk.Button = tk.Button(
+            self.frame, text='REFRESH', font=self.btn_font, bg=self.btn_bg, fg=self.btn_fg)
         self.btn_refresh.grid(row=1, column=0)
         self.btn_refresh.bind('<ButtonRelease-1>', self.set_iamge)
 
         # Refersh button
-        self.btn_save: tk.Button = tk.Button(self, text='SAVE')
+        self.btn_save: tk.Button = tk.Button(
+            self.frame, text='SAVE', font=self.btn_font, bg=self.btn_bg, fg=self.btn_fg)
         self.btn_save.grid(row=1, column=1)
         self.btn_save.bind('<ButtonRelease-1>', self.save_image)
 
