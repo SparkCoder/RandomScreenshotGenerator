@@ -1,6 +1,7 @@
 # Random Screenshot Generator
 Retrieves random screenshots from 'prnt.sc'
 - App requires **python 3.7 or above**
+- Make sure to have ```virtualenv``` installed alongside python
 
 # To Install
 Run ```setup.bat```\
