@@ -112,11 +112,11 @@ class App(tk.Tk):
         # Resize image
         im_width, im_height = self.loaded_image.size
         if im_width > im_height:
-            resized_image = self.loaded_image.resize(
+            resized_image: Image = self.loaded_image.resize(
                 (self.v_width, int(im_height * (self.v_width / im_width))))
             offset: Tuple[int, int] = (0, (self.v_height - im_height) / 2)
         else:
-            resized_image = self.loaded_image.resize(
+            resized_image: Image = self.loaded_image.resize(
                 (int(im_width * (self.v_height / im_height)), self.v_height))
             offset: Tuple[int, int] = ((self.v_width - im_width) / 2, 0)
 
