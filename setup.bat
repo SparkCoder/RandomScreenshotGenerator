@@ -1,10 +1,15 @@
 @echo off
 SETLOCAL EnableDelayedExpansion
 
-rem Check if python and virtualenv are installed
+rem Check if python, pip and virtualenv are installed
 where python >nul 2>nul
 if %errorlevel% neq 0 (
     echo Python not installed!
+    goto end
+)
+where pip >nul 2>nul
+if %errorlevel% neq 0 (
+    echo pip not installed!
     goto end
 )
 where virtualenv >nul 2>nul
