@@ -29,6 +29,7 @@ class App(tk.Tk):
         # Setup window
         self.title('Screenshot Loader')
         self.configure(bg=self.win_bg)
+        self.resizable(False, False)
 
         # Setup frame
         self.frame: tk.Frame = tk.Frame(self, relief='sunken', bg=self.win_bg)

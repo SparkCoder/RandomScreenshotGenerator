@@ -3,6 +3,9 @@
 rem Check for virtual environment
 if not exist venv\ (
     echo Virtual environment missing! [Run setup.bat]
+    echo.
+    echo Press any key to exit ...
+    pause >nul
     goto end
 )
 
@@ -13,7 +16,7 @@ rem Run program
 python -m app
 
 rem Deactivate virtual environment
-deactivate
+call deactivate
 
 :end
 @echo on
